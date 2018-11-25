@@ -61,6 +61,11 @@ class Student(models.Model):
         verbose_name='Grupa',
         on_delete=models.CASCADE
     )
+    exercises = models.ManyToManyField(
+        'exams.Exercise',
+        verbose_name='Zadania',
+        through='exams.ExerciseStudent'
+    )
 
     def __str__(self):
         return f'{self.name} {self.surname}: {self.github_nick}'
